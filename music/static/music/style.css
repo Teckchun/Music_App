@@ -1,0 +1,11 @@
+body{
+    background: rgba(133,165,162,0.36);
+
+}
+
+.navbar{
+    border-radius: 0;
+}
+.navbar-brand{
+    font-family: 'Sastify', cursive;
+}

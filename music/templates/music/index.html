@@ -1,0 +1,35 @@
+{% extends 'music/base.html' %}
+
+
+{% block body %}
+
+        {#Checkting if album is empty?#}
+        {% if object_list %}
+            <ul >
+                {% for album in object_list %}
+
+                <div class="col-sm-4">
+                    <a href="{% url 'music:detail' album.id %}">{{ album.album_title }}</a>
+                    <img width="100" height="100" src="{{ album.album_logo.url }}" alt="">
+                    <form action="{% url 'music:album-delete' album.id %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="album_id" value="{{ album.id }}">
+                        <button type="submit" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+                    </form>
+
+                </div>
+
+
+
+                {% endfor %}
+
+            </ul>
+        {% else %}
+            <h2>No Album found!</h2>
+        {% endif %}
+
+
+
+{% endblock %}
